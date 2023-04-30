@@ -32,7 +32,9 @@ export default function Login({ setToken }) {
 	      	password: password,
 	    }).then((response) => {
 		    if (response.data) {
+
 		    	console.log(response.data);
+			        
 			        swal("Login Successfully!", "success");
 			        localStorage.setItem("token","")
 			        setToken("authenticate");	

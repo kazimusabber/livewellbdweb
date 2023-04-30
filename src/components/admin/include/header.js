@@ -132,7 +132,7 @@ export default function Header() {
               <a className="dropdown-item" href="#">
                 <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i> Activity Log </a>
               <div className="dropdown-divider"></div>
-              <Link to="/" className="dropdown-item">
+              <Link to="/logout" className="dropdown-item">
                 <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i> Logout 
               </Link>
             </div>

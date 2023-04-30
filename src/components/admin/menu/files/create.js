@@ -13,11 +13,12 @@ export default function Create() {
 	};
 	
 	const http = axios.create({
-      baseURL: 'https://server.livewellbd.com/api/v1.0',
+      baseURL: 'http://server.livewellbd.com/api/v1.0',
       timeout: 10000,
       headers: {
+      	'Accept': 'application/json, text/plain, */*',
         'Content-Type': 'multipart/form-data',
-        'Authorization':'Bearer '+localStorage.getItem('token'),
+        'Authorization':localStorage.getItem('token'),
       },
   }); 
 	

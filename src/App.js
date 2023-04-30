@@ -12,6 +12,7 @@ import { BrowserRouter as Router , Routes, Route, Link } from "react-router-dom"
 import Layout from "./components/include/mainlayout";
 import Adminlayout from "./components/admin/include/adminlayout";
 import Login from "./components/authentication/login";
+import Logout from "./components/authentication/logout";
 import Registration from "./components/authentication/registration";
 import Allappointment from "./components/admin/menu/allappointment";
 import Appointmentdetails from "./components/admin/menu/appointmentdetails";
@@ -92,7 +93,7 @@ function App() {
 
   const [token, setToken] = useState();
 
-  if(!token) {
+  if(localStorage.getItem("islogin") == "false") {
     return <Login setToken={setToken} />
   }
   return (
@@ -118,13 +119,12 @@ function App() {
           <Route path="/generalsearch" element={<Generalsearch/>} />
           <Route path="/searchdoctor" element={<Searchdoctor/>} />
           <Route path="/advancesearch" element={<Advancesearch/>} />
+
         </Route>
+        
         <Route path="/admin" element={<Adminlayout/>}>
             <Route path="/admin/allappointments" element={<Allappointment/>} />
-
             <Route path="/admin/appointmentdetails/:id" element={<Appointmentdetails/>} />
-
-
             <Route path="/admin/urgentdoctorschedule" element={<Urgentdoctorschedulelist/>} />
             <Route path="/admin/addurgentdoctorschedule" element={<Addurgentdoctorschedule/>} />
             <Route path="/admin/doctors/urgent/specialization/:id" element={<Editurgentdoctorschedule/>} />
@@ -170,7 +170,7 @@ function App() {
         </Route>
         
         <Route path="/registration" element={<Registration/>} />
-        
+        <Route path ="/logout" element={<Logout/>}/>
       </Routes>
   );
 }
