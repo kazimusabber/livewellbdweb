@@ -14,14 +14,20 @@ export default function Login({ setToken }) {
 	// Handle psosts request
 	const header = {
 		'accept':'application/json',
-	    'Content-Type': 'application/json',
+	  'Content-Type': 'application/json',
 	};
+	function getCookie(name) {
+		const value = `; ${document.cookie}`;
+		const parts = value.split(`; ${name}=`);
+		if (parts.length === 2) return parts.pop().split(';').shift();
+	}
 
 	const http = axios.create({
 	  	baseURL: 'https://server.livewellbd.com/api/v1.0',
-	  	timeout: 1000,
+	  	//baseURL: 'http://localhost:3000/api/v1.0',
+			timeout: 1000,
 	  	headers: {
-	    	'Content-Type': 'application/json',
+	    	'Content-Type': 'application/json'
 	  	},
 	});
 
@@ -30,7 +36,7 @@ export default function Login({ setToken }) {
       	http.post('/auth/login', {
 	      	phone: phone,
 	      	password: password,
-	    }).then((response) => {
+	    }, {credentials: 'include'}).then((response) => {
 		    if (response.data) {
 
 		    	console.log(response.data);
@@ -39,13 +45,13 @@ export default function Login({ setToken }) {
 			        localStorage.setItem("token","")
 			        setToken("authenticate");	
 			        localStorage.setItem("islogin","true")
-			        if(response.data.data.role == "patient"){
+			        if(response.data.data.role === "patient"){
 			        	navigate("/patient");
 			        }
-			        if(response.data.data.role == "doctor"){
+			        if(response.data.data.role === "doctor"){
 			        	navigate("/doctor");
 			        }
-			        if(response.data.data.role == "admin"){
+			        if(response.data.data.role === "admin"){
 			        	navigate("/admin");
 			        }
 		      	} 

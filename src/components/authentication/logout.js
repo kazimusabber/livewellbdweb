@@ -9,7 +9,7 @@ import axios from 'axios';
 export default function Logout() {
 	const navigate = useNavigate();
 	 useEffect(() => {
-		localStorage.setItem("islogin","false")
+		localStorage.removeItem("islogin")
 			navigate("/");
 
 	 })

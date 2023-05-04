@@ -93,7 +93,7 @@ function App() {
 
   const [token, setToken] = useState();
 
-  if(localStorage.getItem("islogin") == "false") {
+  if(!localStorage.getItem("islogin")) {
     return <Login setToken={setToken} />
   }
   return (
