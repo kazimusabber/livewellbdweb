@@ -23,7 +23,7 @@ export default function Login({ setToken }) {
 	}
 
 	const http = axios.create({
-	  	baseURL: 'https://server.livewellbd.com/api/v1.0',
+	  	baseURL: 'http://localhost:3000/api/v1.0',
 	  	//baseURL: 'http://localhost:3000/api/v1.0',
 			timeout: 1000,
 	  	headers: {

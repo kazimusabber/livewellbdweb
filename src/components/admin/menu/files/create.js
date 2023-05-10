@@ -13,7 +13,7 @@ export default function Create() {
 	};
 	
 	const http = axios.create({
-      baseURL: 'http://server.livewellbd.com/api/v1.0',
+      baseURL: 'http://localhost:3000/api/v1.0',
       timeout: 10000,
       headers: {
       	'Accept': 'application/json, text/plain, */*',
