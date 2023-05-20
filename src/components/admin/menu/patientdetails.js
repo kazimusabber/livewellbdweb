@@ -25,32 +25,20 @@ export default function Patientdetails() {
     })
   }
 
-
-  
-
-
 	return(
 		<div className="container">
 		    <div className="card">
 		    	<div className="card-header"> Patient Details </div>
 			    <div className="card-body"  id="printablediv">
 				    <Row>
-						<Col md={{ span: 2}}>
+						<Col md={{ span: 4}}>
 						    <img src={patientprofile.avatar} height="200px" width="200px"/>
 						</Col>
-						<Col md={{ span: 4}}>
-
-
-						{patientprofile.user.patientProfile.map((e)=>{
-						  	return (
-							  	<>
-								  	<h4>Relation: <b> {e.relation}</b></h4>
-							      	<p style={{marginBottom:"1px"}}>Name:<b> {e.name}</b></p>
-								    <p>Gender: <b> {e.gender}</b></p>
-								    <p> DOB: <b> {e.dob}</b></p>
-							    </>
-					    )})}
-						    
+						<Col md={{ span: 6}}>
+						  	<h4>Relation: <b> {patientprofile.relation}</b></h4>
+					      	<p style={{marginBottom:"1px"}}>Name:<b> {patientprofile.name}</b></p>
+						    <p>Gender: <b> {patientprofile.gender}</b></p>
+						    <p> DOB: <b> {patientprofile.dob}</b></p>
 						</Col>
 				    </Row>
 		    	</div>

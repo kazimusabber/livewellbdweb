@@ -37,7 +37,7 @@ export default function Create() {
 	return(
 		<div className="container">
 		    <div className="card">
-		    <div className="card-header"> Add Role</div>
+		    <div className="card-header"> Add Medicine</div>
 		    <div className="card-body">
 		    	<Row>
 					<Col md={{ span: 10, offset: 1 }}>

@@ -16,7 +16,11 @@ import Logout from "./components/authentication/logout";
 import Registration from "./components/authentication/registration";
 import Allappointment from "./components/admin/menu/allappointment";
 import Appointmentdetails from "./components/admin/menu/appointmentdetails";
-
+import Appointmentfiles from "./components/admin/menu/appointmentfile";
+import Appointmentpayment from "./components/admin/menu/appointmentpayment";
+import Appointmentreview from "./components/admin/menu/appointmentreview";
+import Appointmentcase from "./components/admin/menu/appointmentcase";
+import Wallet from "./components/admin/menu/wallet/list";
 
 import Urgentdoctorschedulelist from "./components/admin/menu/urgentdoctor/urgentdoctorschedulelist";
 import Addurgentdoctorschedule from "./components/admin/menu/urgentdoctor/addurgentdoctorschedule";
@@ -31,7 +35,14 @@ import Createspecialty from "./components/admin/menu/specialty/create";
 import Editspecialty from "./components/admin/menu/specialty/edit";
 
 import Doctor from "./components/doctor/home";
+import Doctorregistration from "./components/admin/menu/doctor/registration";
+import Doctoredit from "./components/admin/menu/doctor/edit";
+import Doctordetails from "./components/admin/menu/doctordetails";
+
+
 import Patient from "./components/patient/home";
+import Patientregistration from "./components/admin/menu/patient/registration";
+import Patientedit from "./components/admin/menu/patient/edit";
 import Patientdashboard from "./components/patient/patientdashboard";
 import Notificationchat from "./components/patient/notificationandchat";
 import Favouritedoctor from "./components/patient/favouritedoctor";
@@ -125,13 +136,21 @@ function App() {
         <Route path="/admin" element={<Adminlayout/>}>
             <Route path="/admin/allappointments" element={<Allappointment/>} />
             <Route path="/admin/appointmentdetails/:id" element={<Appointmentdetails/>} />
+            <Route path="/admin/appointmentfiles/:id" element={<Appointmentfiles/>} />
+            <Route path="/admin/appointmentpayment/:id" element={<Appointmentpayment/>} />
+            <Route path="/admin/appointmentreview/:id" element={<Appointmentreview/>} />
+            <Route path="/admin/appointmentcase/:id" element={<Appointmentcase/>} />
             <Route path="/admin/urgentdoctorschedule" element={<Urgentdoctorschedulelist/>} />
             <Route path="/admin/addurgentdoctorschedule" element={<Addurgentdoctorschedule/>} />
             <Route path="/admin/doctors/urgent/specialization/:id" element={<Editurgentdoctorschedule/>} />
             <Route path="/admin/doctors" element={<Doctors/>} />
+            <Route path="/admin/doctordetails/:id" element={<Doctordetails/>} />
+            <Route path="/admin/doctor/create" element={<Doctorregistration/>} />
+            <Route path="/admin/doctor/edit/:id" element={<Doctoredit/>} />
             <Route path="/admin/patients" element={<Patients/>} />
+            <Route path="/admin/patient/create" element={<Patientregistration/>} />
+            <Route path="/admin/patient/edit/:id" element={<Patientedit/>} />
             <Route path="/admin/patientdetails/:id" element={<Patientdetails/>} />
-
 
             <Route path="/admin/specialty" element={<Specialty/>} />
             <Route path="/admin/create" element={<Createspecialty/>} />
@@ -156,6 +175,10 @@ function App() {
             <Route path="/admin/trainingname" element={<Trainingnamelist/>} />
             <Route path="/admin/training/edit/:id" element={<Trainingedit/>} />
             <Route path="/admin/trainingname/create" element={<Trainingnameadd/>} />
+
+
+            <Route path="/admin/wallet" element={<Wallet/>} />
+
             
             <Route path="/admin/accounthead" element={<Accountheadlist/>} />
             <Route path="/admin/message" element={<Messagelist/>} />

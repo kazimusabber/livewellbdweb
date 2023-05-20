@@ -28,6 +28,8 @@ export default function Appointmentdetails() {
       setPatientid(response.data.data.patientProfile.id);
       setAppointmentstatus(response.data.data.status);
       setAppointmenttype(response.data.data.type);
+
+      console.log(response);
     })
     .catch((error) => {
       console.log(error);
@@ -46,22 +48,22 @@ export default function Appointmentdetails() {
 			    <div className="card-body">
 			    	<Row>
 						<Col md="3" style={{ marginBottom: "10px" }}>
-				             <Link to="/admin/allappointments"><button class="btn btn-secondary" style={{ width: "100%" }}> <i class="fas fa-user-md"></i> Doctor Info</button></Link>  
+				             <Link to={`/admin/doctordetails/${doctorid}`}><button class="btn btn-secondary" style={{ width: "100%" }}> <i class="fas fa-user-md"></i> Doctor Info</button></Link>  
 						</Col>
 						<Col md="3">
 				             <Link to={`/admin/patientdetails/${patientid}`}><button class="btn btn-secondary" style={{ width: "100%" }}> <i className="fas fa-procedures"></i> Patient Info</button></Link>  
 						</Col>
 						<Col md="3">
-				             <Link to="/admin/allappointments"><button class="btn btn-secondary" style={{ width: "100%" }}> <i className="fas fa-file"></i> Files</button></Link>  
+				             <Link to={`/admin/appointmentfiles/${appointmentid}`}><button class="btn btn-secondary" style={{ width: "100%" }}> <i className="fas fa-file"></i> Files</button></Link>  
 						</Col>
 						<Col md="3">
-				             <Link to="/admin/allappointments"><button class="btn btn-secondary" style={{ width: "100%" }}> <i className="fas fa-money-bill"></i> Payment Details</button></Link>  
+				             <Link to={`/admin/appointmentpayment/${appointmentid}`}><button class="btn btn-secondary" style={{ width: "100%" }}> <i className="fas fa-money-bill"></i> Payment Details</button></Link>  
 						</Col>
 						<Col md="3">
-				             <Link to="/admin/allappointments"><button class="btn btn-secondary" style={{ width: "100%" }}> <i className="fas fa-star"></i> Review</button></Link>  
+				             <Link to={`/admin/appointmentreview/${appointmentid}`}><button class="btn btn-secondary" style={{ width: "100%" }}> <i className="fas fa-star"></i> Review</button></Link>  
 						</Col>
 						<Col md="3">
-				             <Link to="/admin/allappointments"><button class="btn btn-secondary" style={{ width: "100%" }}> <i className="fas fa-flag"></i> Case</button></Link>  
+				             <Link to={`/admin/appointmentcase/${appointmentid}`}><button class="btn btn-secondary" style={{ width: "100%" }}> <i className="fas fa-flag"></i> Case</button></Link>  
 						</Col>
 						<Col md="3">
 				             <Link to={`/admin/prescriptions/${appointmentid}`} ><button class="btn btn-secondary" style={{ width: "100%" }}> <i class="fas fa-prescription"></i> Prescription</button></Link>  

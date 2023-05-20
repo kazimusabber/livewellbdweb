@@ -64,10 +64,9 @@ const clickDelete = (e, id) => {
   {
       name: 'Action',
       cell:row =><div>
-                  <BootstrapSwitchButton size="sm" checked={defaultActivevalue} onChange={handleSwitchOnChange} />
-                  <button type="button" className="btn" onClick={(e) => clickEdit(e, row._id)} >
-                    <i className="material-icons text-warning">edit</i>
-                  </button>
+                  <Link to={`/admin/doctor/edit/${row._id}`} className='btn'>
+                     <i className="material-icons text-info">Edit</i>
+                  </Link>
                   <button type="button" className="btn" onClick={(e) => clickDelete(e, row._id)} >
                     <i className="material-icons text-danger">Delete</i>
                   </button></div>,
@@ -94,7 +93,15 @@ const clickDelete = (e, id) => {
 	return (
     <div className="container">
       <div className="card">
-        <div className="card-header"> Doctor List </div>
+        <div className="card-header"> Doctor List 
+
+
+          <Link to="/admin/doctor/create">
+            <button type="button" className="btn btn-primary" style={{float: "right"}}>
+              <i class="fas fa-plus" aria-hidden="true"> Add Doctor</i>
+            </button>
+          </Link>
+        </div>
         <div className="card-body">
           <Datatablecomponent columns = {columns} url={`/doctors`}></Datatablecomponent>
         </div>

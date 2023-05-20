@@ -86,10 +86,7 @@ export default function Details() {
 						<Col md={{ span: 4, offset: 3 }}>
 							<p><b>{doctorprofile.name} </b></p>
 
-							{doctorprofile.qualifications.map((e)=>{
-								  	return (
-							      <b> {e.degree}, </b>
-							    )})}
+							
 							<p><b>{doctorprofile.designation} </b></p>
 							<p> <b>{doctorprofile.institution} </b></p>	
 							<p>BMDC Reg No: <b>{doctorprofile.bmdcNumber} </b></p>

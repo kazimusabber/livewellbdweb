@@ -80,6 +80,9 @@ export default function Sidebar() {
             </li>   
             <li className="nav-item">  
                 <Link className="nav-link" to="/admin/notification"><i className="fas fa-calendar-alt"></i> Notification</Link>  
+            </li> 
+            <li className="nav-item">  
+                <Link className="nav-link" to="/admin/wallet"><i className="fas fa-calendar-alt"></i> Wallet</Link>  
             </li>   
             <li className="nav-item">  
                 <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">  
