@@ -20,6 +20,7 @@ import Appointmentfiles from "./components/admin/menu/appointmentfile";
 import Appointmentpayment from "./components/admin/menu/appointmentpayment";
 import Appointmentreview from "./components/admin/menu/appointmentreview";
 import Appointmentcase from "./components/admin/menu/appointmentcase";
+import Appointmenthealthhistory from "./components/admin/menu/healthhistory";
 import Wallet from "./components/admin/menu/wallet/list";
 
 import Urgentdoctorschedulelist from "./components/admin/menu/urgentdoctor/urgentdoctorschedulelist";
@@ -53,6 +54,12 @@ import Selectpatient from "./components/patient/selectpatient";
 import Healthcondition from "./components/patient/currenthealthcondition";
 import Otherprofile from "./components/patient/otherprofile";
 import Patientdocument from "./components/patient/patientdocument";
+import Patientallfile from "./components/patient/patientallfile";
+import Patientprescription from "./components/patient/patientprescription";
+import Pescriptionbyid from "./components/patient/prescriptiondetails";
+
+
+
 import Paymentgateway from "./components/patient/paymentgateway";
 
 
@@ -114,14 +121,20 @@ function App() {
             <Route path='/patient' element={<Patientdashboard/>} />
             <Route path='/patient/chat' element={<Notificationchat/>} />
             <Route path='/patient/fovourite-doctor' element={<Favouritedoctor/>} />
-            <Route path='/patient/my-account' element={<Patientaccount/>} />
+            <Route path='/patient/my-account/:id' element={<Patientaccount/>} />
             <Route path='/patient/wallet' element={<Patientwallet/>} />
             <Route path='/patient/doctor-profile/:id' element={<Patientdoctorprofile/>} />
             <Route path='/patient/selectpatient/:id' element={<Selectpatient/>} />
-            <Route path='/patient/currenthealthcondition/:id' element={<Healthcondition/>} />
+            <Route path='/patient/currenthealthcondition/:doctorid/:id' element={<Healthcondition/>} />
             <Route path='/patient/otherprofile/:id' element={<Otherprofile/>} />
-            <Route path='/patient/patientdocument/:id' element={<Patientdocument/>} />
-            <Route path='/patient/paymentgateway/:id' element={<Paymentgateway/>} />
+            <Route path='/patient/patient-file/:id' element={<Patientallfile/>} />
+            <Route path='/patient/patientdocument/:doctorid/:id' element={<Patientdocument/>} />
+            <Route path='/patient/paymentgateway/:doctorid/:id' element={<Paymentgateway/>} />
+            <Route path='/patient/prescriptionbyid/:id' element={<Pescriptionbyid/>} />
+
+            
+            <Route path='/patient/allprescription/:id' element={<Patientprescription/>} />
+
           </Route>
           
           <Route path="/" element={<Home/>} />
@@ -140,6 +153,8 @@ function App() {
             <Route path="/admin/appointmentpayment/:id" element={<Appointmentpayment/>} />
             <Route path="/admin/appointmentreview/:id" element={<Appointmentreview/>} />
             <Route path="/admin/appointmentcase/:id" element={<Appointmentcase/>} />
+            <Route path="/admin/healthhistory/:id" element={<Appointmenthealthhistory/>} />
+            
             <Route path="/admin/urgentdoctorschedule" element={<Urgentdoctorschedulelist/>} />
             <Route path="/admin/addurgentdoctorschedule" element={<Addurgentdoctorschedule/>} />
             <Route path="/admin/doctors/urgent/specialization/:id" element={<Editurgentdoctorschedule/>} />

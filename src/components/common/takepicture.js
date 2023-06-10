@@ -7,8 +7,8 @@ const videoConstraints = {
   height: 200,
   facingMode: 'user',
 }
-export default function Picture(){
-  const [picture, setPicture] = useState('')
+export default function Picture(props){
+  const [picture, setPicture] = useState(props.src)
   const [takephoto, setTakephoto] = useState(false)
   const webcamRef = React.useRef(null)
   const capture = React.useCallback(() => {

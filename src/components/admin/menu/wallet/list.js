@@ -72,7 +72,6 @@ const clickDelete = (e, id) => {
   }
 ];
 
-
   return (
     <div className="container">
       <div className="card">

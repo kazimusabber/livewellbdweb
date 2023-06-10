@@ -42,43 +42,56 @@ const fetchData = () => {
   }else{
   return(
   <Container>
-   <Row>
-    {items.map((item) => {
-      return (
-        <Col md={{ span: 4}}>
-      	   <Card className="mb-2">
-              <div class='item'>
-                <div className="card-header" style={{padding: '10px 10px 0px 10px',border: "1px solid #F1F0F2",borderRadius: "4px"}}>
-                    <a href="https://livewellbd.com/doctor-profile/51">
-                      <div className="row">
-                        <div className="col-6 col-md-6 col-lg-6" style={{marginTop: '10%'}}>
-                          <h5 className="mt-3"><b>{item.name} </b></h5>
-                          <h6> {item.specialization}</h6>
-                          <p> < i className="fas fa-star"> {parseFloat(item.score.toFixed(2))} </i></p>
-                        </div>
-                        <div className="col-6 col-md-6 col-lg-6" style={{paddingRight: '0px'}}>
-                          <img src="../doctorimage/demodoctor.png"  className="img-fluid" height="240px" width="240px;" />
-                        </div>
-                        
-                      </div>
-                      <div className="row" style={{minHeight: '125px',backgroundColor: '#f8f9fb'}}>
-                        <div className="col-12 col-md-12 col-lg-12">
-                        { item.isOnline == true ? (
-                            <h6 className="mt-3"><i className="fas fa-circle" style={{color:"#3DD2B4"}}></i> &nbsp;&nbsp;&nbsp; AVAILABLE NOW</h6>
-                        ) : ( 
-                          <h6 className="mt-3"><i className="fas fa-circle" style={{color:"rgb(210 61 61)"}}></i> &nbsp;&nbsp;&nbsp; NOW AVAILABLE</h6>
+            <Row>
+            {items.map((item) => {
+              return (
+                <Col md={{ span: 6}}>
+                   <Card className="mb-2">
+                      <div className='item'>
+                        <div className="card-header" style={{padding: '10px 10px 0px 10px',border: "1px solid #F1F0F2",borderRadius: "4px"}}>
+                            <Link to={`/patient/doctor-profile/${item._id}`}>
+                              <div className="row">
+                                <div className="col-8 col-md-8 col-lg-8" style={{marginTop: '5%',minHeight:"250px"}}>
+                                  <h5 className="mt-3"><b>{item.name} </b></h5>
+                                  <h6> {item.specialization}</h6>
+                                  <h6> {item.designation} </h6><p>
+                                  { item.qualifications.map((e) =>( 
+                                        <span>{e.degree}-{e.institute}</span>
+                                    )) }
+                                    </p>
 
-                         )}  
+                                    <h6 className="fas fa-star"></h6>
+                                </div>
+                                <div className="col-4 col-md-4 col-lg-4" >
+                                  <img src={item.avatar}  className="img-thumbnail" height="100px" width="100px;" alt=""/>
+                                </div>
+                                
+                              </div>
+                              <div className="row" style={{minHeight: '125px',backgroundColor: '#f8f9fb'}}>
+                                  <div className="col-12 col-md-12 col-lg-12" style={{marginTop: '5%',minHeight:"100px"}}>
+
+                                    { item.trainings.map((e) =>( 
+                                        <span>{e.title}-{e.institute}-{e.field}</span>
+                                    )) }
+                                  </div>
+
+                                <div className="col-12 col-md-12 col-lg-12">
+                                { item.isOnline == true ? (
+                                    <h6 className="mt-3"><i className="fas fa-circle" style={{color:"#3DD2B4"}}></i> &nbsp;&nbsp;&nbsp; AVAILABLE NOW</h6>
+                                ) : ( 
+                                  <h6 className="mt-3"><i className="fas fa-circle" style={{color:"rgb(210 61 61)"}}></i> &nbsp;&nbsp;&nbsp; NOW AVAILABLE</h6>
+
+                                 )}  
+                                </div>
+                              </div>
+                            </Link>
                         </div>
-                      </div>
-                    </a>
-                </div>
-            </div>
-          </Card>
-        </Col>
-      ) })}
-    </Row>
-    </Container>
+                    </div>
+                  </Card>
+                </Col>
+              ) })}
+            </Row>
+        </Container>
   	)
   }
 }

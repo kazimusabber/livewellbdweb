@@ -15,20 +15,83 @@ export default function Paymentgateway() {
     const [doctorprofile, setDoctorprofile] = useState([]);
     const navigate = useNavigate();
     
-    const { id } = useParams()
+    const { doctorid,id } = useParams()
      
   
   useEffect(() => {
     fetchdoctorData();
   },[])
 
-   
+  function bKashpayment(){
+    http.post('appointments', {
+            doctor: doctorid,
+            isSelf: true,
+            patientProfile:id            
+        }).then((response) => {
+            if (response.data) {
+                http.post('payments/create', {
+                  appointmentId: response.data.data.id,
+                  totalAmount: 200,
+                  method: "nagad",
+                  user:response.data.data.user.id,
+                  doctor:doctorid            
+                      }).then((response) => {
+                          if (response.data) {
+                            console.log(response.data.data);
+                             /* http.post('payments/execute', {
+                                  paymentId: response.data.data.id,
+                                  
+                                      }).then((response) => {
+                                          if (response.data) {
 
+                                              
+                                                console.log(response.data);
+
+
+
+
+                                                 
+                                              } 
+                                              else {
+                                                  swal(response.message);
+                                              }
+                                          })
+                                          .catch((error) => {
+                                              console.log(error);
+                                      })
+
+
+
+                                */
+                                 
+                              } 
+                              else {
+                                  swal(response.message);
+                              }
+                          })
+                          .catch((error) => {
+                              console.log(error);
+                      })
+
+
+
+
+
+                   
+                } 
+                else {
+                    swal(response.message);
+                }
+            })
+            .catch((error) => {
+                console.log(error);
+        })
+  }
+
+   
   const fetchdoctorData = () => {
-    http.get(`doctors/${id}`).then((response) => {
-        
+    http.get(`doctors/${doctorid}`).then((response) => {
       setDoctorprofile(response.data.data);
-        
     })
     .catch((error) => {
       console.log(error);
@@ -56,13 +119,13 @@ export default function Paymentgateway() {
                 <Col md={{ span: 12}} style={{marginTop:"5%"}}>
                   
                     
-                    <p style={{border: "2px solid #80808073",textAlign: "center",padding: "10px",borderRadius: "10px",marginTop:"20px"}}>
+                    <p onClick={bKashpayment} style={{border: "2px solid #80808073",textAlign: "center",padding: "10px",borderRadius: "10px",marginTop:"20px",cursor:"pointer"}}>
                       bKash
                     </p>
-                    <p style={{border: "2px solid #80808073",textAlign: "center",padding: "10px",borderRadius: "10px",marginTop:"20px"}}>
+                    <p style={{border: "2px solid #80808073",textAlign: "center",padding: "10px",borderRadius: "10px",marginTop:"20px",cursor:"pointer"}}>
                       Nagad
                     </p>
-                    <p style={{border: "2px solid #80808073",textAlign: "center",padding: "10px",borderRadius: "10px",marginTop:"20px"}}>
+                    <p style={{border: "2px solid #80808073",textAlign: "center",padding: "10px",borderRadius: "10px",marginTop:"20px",cursor:"pointer"}}>
                       SSL COMMERZ
                     </p>
                   

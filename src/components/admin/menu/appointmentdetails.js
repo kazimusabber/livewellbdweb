@@ -68,6 +68,9 @@ export default function Appointmentdetails() {
 						<Col md="3">
 				             <Link to={`/admin/prescriptions/${appointmentid}`} ><button class="btn btn-secondary" style={{ width: "100%" }}> <i class="fas fa-prescription"></i> Prescription</button></Link>  
 						</Col>
+						<Col md="3">
+				             <Link to={`/admin/healthhistory/${appointmentid}`} ><button class="btn btn-secondary" style={{ width: "100%" }}> <i class="fas fa-heartbeat"></i> Health History</button></Link>  
+						</Col>
 				    </Row>
 		    	</div>
 			</div>

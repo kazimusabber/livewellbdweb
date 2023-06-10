@@ -7,26 +7,26 @@ import Linkbutton from "../common/linkbutton";
 import Takepicture from "../common/takepicture";
 import http from '../admin/include/http'
 import { format } from 'date-fns'
+import { useParams } from 'react-router-dom'
 export default function Notificationandchat() {
     const [items, setItems] = useState([]);
     const [message, setMessage] = useState("");
-
+    const { id } = useParams()
     useEffect(() => {
         fetchData();
     },[])
 
 
     const fetchData = () => {
-        http.get(`users/patient-profile/632f6dd01f36e7d112b41214`).then((response) => {   
+        http.get(`users/patient-profile/${id}`).then((response) => {   
+
+            console.log(response.data.data);
             setItems(response.data.data);
         })
         .catch((error) => {
             console.log(error);
         })
     }
-
-   
-    
 
     return(
         <>
@@ -55,22 +55,22 @@ export default function Notificationandchat() {
                 <Col md={{ span: 7}}>
                     <div class="tab-content" id="pills-tabContent">
                         <div class="tab-pane fade show active" id="account-information" role="tabpanel">
-                            <Takepicture></Takepicture>  
+                            <Takepicture src={items.avatar}></Takepicture>  
                             <div className="form-group">
                                 <label for="currentpincode">First Name</label>
-                                <input type="text" className="form-control form-control-sm" placeholder="Enter First Name" value={items.user.firstName ? items.user.firstName : " " }/>
+                                <input type="text" className="form-control form-control-sm" placeholder="Enter First Name" value={items.firstName ? items.firstName : " " }/>
                             </div>
                             <div className="form-group">
                                 <label for="newpincode">Last Name</label>
-                                <input type="text" className="form-control form-control-sm" placeholder="Enter Last Name"  value={items.user.lastName ? items.user.lastName : " " }/>
+                                <input type="text" className="form-control form-control-sm" placeholder="Enter Last Name"  value={items.lastName ? items.lastName : " " }/>
                             </div>
                             <div className="form-group">
                                 <label for="newpincode">Phone Number</label>
-                                <input type="text" className="form-control form-control-sm" placeholder="Enter Phone Number" value={items.user.phone ?  items.user.phone : " " }/>
+                                <input type="text" className="form-control form-control-sm" placeholder="Enter Phone Number" value={items.phone ?  items.phone : " " }/>
                             </div>
                             <div className="form-group">
                                 <label for="newpincode">Email </label>
-                                <input type="email" className="form-control form-control-sm" placeholder="Enter Email" value={items.user.email ?  items.user.email : " " }/>
+                                <input type="email" className="form-control form-control-sm" placeholder="Enter Email" value={items.email ?  items.email : " " }/>
                             </div>
                             <div className="form-group">
                                 <label for="confirmpincode">City</label>
@@ -80,11 +80,11 @@ export default function Notificationandchat() {
                         <div className="tab-pane fade show" id="personal-information" role="tabpanel">
                             <div className="form-group">
                                 <label for="currentpincode">Date of Birth</label>
-                                <input type="date" className="form-control form-control-sm" placeholder="Date of birth" value={items.user.dob ?  items.user.dob : " " }/>
+                                <input type="date" className="form-control form-control-sm" placeholder="Date of birth" value={items.dob ?  items.dob : " " }/>
                             </div>
                             <div className="form-group">
                                 <label for="gender">Gender</label>
-                                <select className="form-control" value={items.user.gender ?  items.user.gender : " " }>
+                                <select className="form-control" value={items.gender ?  items.gender : " " }>
                                     <option value="">Male</option>
                                     <option value="">Female</option>
                                     <option value="">Other</option>
@@ -93,15 +93,15 @@ export default function Notificationandchat() {
                             </div>
                             <div className="form-group">
                                 <label for="height">Height</label>
-                                <input type="text" className="form-control form-control-sm" placeholder="Height" />
+                                <input type="text" className="form-control form-control-sm" placeholder="Height"  value={items.height ?  items.height : " " }/>
                             </div>
                             <div className="form-group">
                                 <label for="wieght">Weight</label>
-                                <input type="text" className="form-control form-control-sm" placeholder="Weight" />
+                                <input type="text" className="form-control form-control-sm" placeholder="Weight"  value={items.weight ?  items.weight : " " }/>
                             </div>
                             <div className="form-group">
                                 <label for="confirmpincode">Blood Group</label>
-                                <input type="text" className="form-control form-control-sm" placeholder="Blood Group" />
+                                <input type="text" className="form-control form-control-sm" placeholder="Blood Group" value={items.bloodGroup ?  items.bloodGroup : " " }/>
                             </div>
                         </div>
                         <div className="tab-pane fade show" id="change-pin" role="tabpanel">

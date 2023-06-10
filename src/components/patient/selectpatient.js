@@ -51,26 +51,26 @@ export default function Selectpatient() {
         <Container>
             <Row>
                 
-                    <div class='item'>
-                      <div style={{padding: '10px 10px 0px 10px',border: "1px solid #F1F0F2",borderRadius: "4px"}}>
-                        <div className="row">
-                          <div className="col-8 col-md-8 col-lg-8" style={{marginTop: '5%'}}>
-                            <h5 className="mt-3"><b>{doctorprofile.name} </b></h5>
-                            <h5 className="mt-3"><b>{doctorprofile.designation} </b></h5>
-                            <h6  style={{marginBottom: '5%'}}> {doctorprofile.specialization}</h6>
-                            
-                          </div>
-                          <div className="col-4 col-md-4 col-lg-4" style={{paddingRight: '0px'}}>
-                            <img src={doctorprofile.avatar}  className="img-fluid" height="200px" width="200px;" />
-                          </div>
-                        </div>
+                <div class='item'>
+                  <div style={{padding: '10px 10px 0px 10px',border: "1px solid #F1F0F2",borderRadius: "4px"}}>
+                    <div className="row">
+                      <div className="col-8 col-md-8 col-lg-8" style={{marginTop: '5%'}}>
+                        <h5 className="mt-3"><b>{doctorprofile.name} </b></h5>
+                        <h5 className="mt-3"><b>{doctorprofile.designation} </b></h5>
+                        <h6  style={{marginBottom: '5%'}}> {doctorprofile.specialization}</h6>
+                        
                       </div>
+                      <div className="col-4 col-md-4 col-lg-4" style={{paddingRight: '0px'}}>
+                        <img src={doctorprofile.avatar}  className="img-fluid" height="200px" width="200px;" />
+                      </div>
+                    </div>
                   </div>
+              </div>
               
               {items.map((item) => {
                 return (
                   <Col md={{ span: 4}}>
-                      <Link to ={`/patient/currenthealthcondition/${id}`}>
+                      <Link to ={`/patient/currenthealthcondition/${id}/${item.id}`}>
                         <p style={{border: "2px solid #80808073",textAlign: "center",padding: "10px",borderRadius: "10px"}}>{item.name} <br></br><span>{item.relation}</span></p>
                       </Link>
                    

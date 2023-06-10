@@ -10,7 +10,7 @@ export default function Currenthealthcondition() {
 
   const [doctorprofile, setDoctorprofile] = useState([]);
   const [specialtydata, setSpecialtydata] = useState([]) 
-  const { id } = useParams()
+  const { doctorid,id } = useParams()
   useEffect(() => {
     fetchdoctorData();
     fetchspecialtyData()
@@ -26,9 +26,9 @@ export default function Currenthealthcondition() {
   }  
 
   const fetchdoctorData = () => {
-    http.get(`doctors/${id}`).then((response) => {
-         console.log(response.data.data); 
-          setDoctorprofile(response.data.data);
+    http.get(`doctors/${doctorid}`).then((response) => {
+      console.log(response.data.data); 
+      setDoctorprofile(response.data.data);
         
     })
     .catch((error) => {
@@ -68,7 +68,7 @@ export default function Currenthealthcondition() {
                     <label for="helathissue"> Health Issue </label>
                     <textarea className="form-control form-control-sm" placeholder="Describe patient's health issue"></textarea>
                   </div>
-                  <Link to ={`/patient/patientdocument/${id}`}>
+                  <Link to ={`/patient/patientdocument/${doctorid}/${id}`}>
                     <p style={{border: "2px solid #80808073",textAlign: "center",padding: "10px",borderRadius: "10px"}}><span>{"NEXT"}</span></p>
                   </Link>
               </Col>
